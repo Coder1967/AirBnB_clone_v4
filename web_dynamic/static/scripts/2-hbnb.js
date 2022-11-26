@@ -1,21 +1,21 @@
 $(document).ready(function(){
-	values = [];
+	const amenityId = {};;
 	$("input[type=checkbox]").change(function(){
 		if (this.checked)
 		{
-			values.append(this.attr("data-id"));
+			amenityId[$(this).attr('data-id')] = $(this).attr('data-name');
 		}
 		else
 		{
-			let index = values.indexOf(this.attr("data-id"));
-			if (index !== -1) {
-			values.splice(index, 1);
-			}
+			delete amenityId[$(this).attr('data-id')];
 		}
-	for (let val of values){
-		$(".amenities > h4").append("<li>"+val+"</li>");
-	}
+		if (Object.keys(amenityId).length === 0) {
+			$('div.amenities h4').html('&nbsp');
+		} else {
+			$('div.amenities h4').text(Object.values(amenityId).join(', '));
+		}
 	});
+
 	$.get("http://0.0.0.0:5001/api/v1/status/", function(data, textStatus){
 		if (textStatus === "success"){
 			$("div#api_status").addClass("available");
