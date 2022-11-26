@@ -12,13 +12,10 @@ $(document).ready(function(){
 			values.splice(index, 1);
 			}
 		}
-		
-	});
-	
 	for (let val of values){
 		$(".amenities > h4").append("<li>"+val+"</li>");
 	}
-	
+	});
 	$.get("http://0.0.0.0:5001/api/v1/status/", function(data, textStatus){
 		if (textStatus === "success"){
 			$("div#api_status").addClass("available");
