@@ -31,7 +31,7 @@ $(document).ready(function(){
 
 	$.ajax({
 		dataType: "json",
-                contentType: 'application/json'
+                contentType: 'application/json',
   		type: "POST",
   		url: link,
   		data: JSON.stringinfy({}),
@@ -55,6 +55,7 @@ $(document).ready(function(){
         	'</div>',
         	'</article>'];
         $('section.places').append(article.join(''));
+		}
 		}
 });
 });
